@@ -8,9 +8,6 @@ RUN apt-get -y update && apt-get -y autoclean && apt-get install -y \
   unzip \
   openssl
 
-# Install Redis
-RUN pecl install -o -f redis && docker-php-ext-enable redis
-
 # Install xdebug
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 

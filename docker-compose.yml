@@ -12,21 +12,22 @@ services:
       - ./:/app
       - ./docker/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     working_dir: /app
-    command: >
-      bash -c "composer install
-      && symfony doctrine:migrations:execute"
-      && symfony server:start"
+    command: tail -f /dev/null
+    # command: >
+    #   bash -c "composer install
+    #   && symfony doctrine:migrations:execute"
+    #   && symfony server:start"
 
-  mariadb:
-    image: mariadb:10.5.8
-    container_name: DEMO_MARIADB
-    ports:
-      - 3306:3306
-    environment:
-      - MYSQL_ROOT_PASSWORD=meh
-      - MYSQL_USER=megumin
-      - MYSQL_PASSWORD=bakuretsu
-      - MYSQL_DATABASE=konosuba
+  # mariadb:
+  #   image: mariadb:10.5.8
+  #   container_name: DEMO_MARIADB
+  #   ports:
+  #     - 3306:3306
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=meh
+  #     - MYSQL_USER=megumin
+  #     - MYSQL_PASSWORD=bakuretsu
+  #     - MYSQL_DATABASE=konosuba
 
   # coverage:
   #   image: php:8.0.1-cli
