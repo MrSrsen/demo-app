@@ -5,8 +5,7 @@ RUN apt-get -y update && apt-get -y autoclean && apt-get install -y \
   curl \
   nano \
   zip \
-  unzip \
-  openssl
+  unzip
 
 # Install xdebug
 RUN pecl install xdebug && docker-php-ext-enable xdebug
