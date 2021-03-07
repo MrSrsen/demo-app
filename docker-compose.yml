@@ -15,7 +15,7 @@ services:
     # command: tail -f /dev/null
     command: >
       bash -c "composer install
-      && symfony doctrine:migrations:execute"
+      && symfony doctrine:migrations:execute
       && symfony server:start"
 
   mariadb:

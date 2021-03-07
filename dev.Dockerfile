@@ -13,6 +13,9 @@ RUN pecl install xdebug && docker-php-ext-enable xdebug
 # Install stryng types validation methodes for better symfony performence
 RUN docker-php-ext-install ctype
 
+# Install mariadb extension
+RUN docker-php-ext-install pdo pdo_mysql
+
 # Download symfony CLI
 RUN curl -sS https://get.symfony.com/cli/installer | bash
 RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
