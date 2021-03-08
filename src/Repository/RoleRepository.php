@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Role;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,32 +20,19 @@ class RoleRepository extends ServiceEntityRepository
         parent::__construct($registry, Role::class);
     }
 
-    // /**
-    //  * @return Role[] Returns an array of Role objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findOneById(int $id): Role
     {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return (
+            $this->findOneBy(['id' => $id])
+            ?? throw new EntityNotFoundException("Role with id [$id] do not exists!")
+        );
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Role
+    public function findOneByCode(string $code): Role
     {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return (
+            $this->findOneBy(['code' => $code])
+            ?? throw new EntityNotFoundException("Role with code [$code] do not exists!")
+        );
     }
-    */
 }

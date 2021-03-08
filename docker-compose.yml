@@ -17,6 +17,8 @@ services:
       bash -c "composer install
       && symfony console doctrine:migrations:migrate --no-interaction
       && symfony server:start --no-tls"
+    depends_on:
+      - mariadb
 
   mariadb:
     image: mariadb:10.5.8

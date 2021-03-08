@@ -27,5 +27,10 @@ services:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    App\Request\UserRegistrationArgumentResolver:
+        tags:
+            - { name: controller.argument_value_resolver, priority: 50 }
+
+    App\Events\InvalidRequestExceptionListener:
+        tags:
+            - { name: kernel.event_subscriber }
