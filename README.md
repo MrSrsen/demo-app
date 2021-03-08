@@ -11,7 +11,7 @@ Symfony demo app for registration and showing users.
 
 ```shell
 git clone git@github.com:MrSrsen/demo-app.git
-git cd demo-app
+cd demo-app
 docker-compose up
 ```
 
