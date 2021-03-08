@@ -2,28 +2,28 @@
 
 namespace App\Controller;
 
-use App\Repository\RoleRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Throwable;
 
-class RoleController extends AbstractController
+class UserController extends AbstractController
 {
     public function __construct(
-        private RoleRepository $roleRepository,
+        private UserRepository $userRepository,
     ) {}
 
-    #[Route('/role', name: 'list_roles', methods: ['GET'])]
+    #[Route('/user', name: 'list_users', methods: ['GET'])]
     public function listAll(): JsonResponse
     {
         try {
             return new JsonResponse([
-                'roles' => $this->roleRepository->findAll(),
+                'users' => $this->userRepository->findAll(),
             ]);
         } catch (Throwable) {
             return new JsonResponse([
-                'message' => 'Failed to list all roles',
+                'message' => 'Failed to list all users'
             ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
