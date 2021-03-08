@@ -4,11 +4,12 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
-class User
+class User implements JsonSerializable
 {
     /**
      * @ORM\Id
@@ -28,12 +29,12 @@ class User
     private $lastName;
 
     /**
-     * @ORM\Column(type="string", length=128)
+     * @ORM\Column(type="string", length=128, unique=true)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=128)
      */
     private $password;
 
@@ -96,15 +97,26 @@ class User
         return $this;
     }
 
-    public function getRole(): ?Role
+    public function getRole(): Role
     {
         return $this->role;
     }
 
-    public function setRole(?Role $role): self
+    public function setRole(Role $role): self
     {
         $this->role = $role;
 
         return $this;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'firstName' => $this->getFirstName(),
+            'lastName' => $this->getLastName(),
+            'email' => $this->getEmail(),
+            'role' => $this->getRole(),
+        ];
     }
 }
