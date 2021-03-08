@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Validation;
+namespace App\Service;
 
 use RuntimeException;
 use Symfony\Component\Validator\ConstraintViolation;

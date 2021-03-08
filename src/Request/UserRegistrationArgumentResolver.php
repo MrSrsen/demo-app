@@ -3,7 +3,7 @@
 namespace App\Request;
 
 use App\Repository\RoleRepository;
-use App\Service\Validation\ArgumentResolverValidationException;
+use App\Service\ArgumentResolverValidationException;
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
