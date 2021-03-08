@@ -29,6 +29,6 @@ class InvalidRequestExceptionListener implements EventSubscriberInterface
         $event->setResponse(new JsonResponse([
             'message' => $exception->getMessage(),
             'errors' => $exception->getErrors(),
-        ]));
+        ], JsonResponse::HTTP_BAD_REQUEST));
     }
 }
