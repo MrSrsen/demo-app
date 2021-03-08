@@ -4,11 +4,11 @@ namespace App\Controller;
 
 use App\Request\UserRegistrationRequest;
 use App\Service\UserRegistrationService;
-use App\Service\Validation\ArgumentResolverValidationException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Throwable;
 
 class RegistrationController
 {
@@ -27,15 +27,9 @@ class RegistrationController
                 'message' => 'User successfully created',
                 'user' => $newUser,
             ], Response::HTTP_CREATED);
-        } catch (ArgumentResolverValidationException $exception) {
+        } catch(Throwable) {
             return new JsonResponse([
-                'message' => 'Invalid user data',
-                'errors' => $exception->getErrors(),
-            ], Response::HTTP_UNPROCESSABLE_ENTITY);
-        } catch(\Throwable $exception) {
-            return new JsonResponse([
-                'message' => $exception->getMessage(),
-                // 'message' => 'Failed to register user',
+                'message' => 'Failed to register user',
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }

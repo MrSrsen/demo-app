@@ -19,13 +19,9 @@ class UserRegistrationService
     ) {}
 
     /**
-     * @param string $firstName
-     * @param string $lastName
-     * @param string $email
-     * @param string $password
-     * @param string $passwordVerify
+     * @param UserRegistrationRequest $registrationRequest
      * @return User
-     * @throws EntityNotFoundException|ArgumentResolverValidationException|DifferentPasswordsException
+     * @throws EntityNotFoundException
      */
     public function register(UserRegistrationRequest $registrationRequest): User
     {
