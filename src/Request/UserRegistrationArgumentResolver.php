@@ -36,7 +36,7 @@ class UserRegistrationArgumentResolver implements ArgumentValueResolverInterface
         $result = $this->validator->validate($registrationRequest);
 
         if ($result->count() > 0) {
-            $exception = new ArgumentResolverValidationException("Invalid registration request");
+            $exception = new ArgumentResolverValidationException("Registration validations failed!");
             $exception->setErrorsAsViolations($result);
             throw $exception;
         }

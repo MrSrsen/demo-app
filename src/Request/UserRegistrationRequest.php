@@ -3,6 +3,7 @@
 namespace App\Request;
 
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Type;
 
@@ -10,19 +11,24 @@ class UserRegistrationRequest
 {
     public function __construct(
         #[NotBlank]
+        #[Length(min: 2, max: 32)]
         private string $firstName,
 
         #[NotBlank]
+        #[Length(min: 2, max: 32)]
         private string $lastName,
 
         #[NotBlank]
         #[Email]
+        #[Length(max: 128)]
         private string $email,
 
         #[NotBlank]
+        #[Length(max: 128)]
         private string $password,
 
         #[NotBlank]
+        #[Length(max: 128)]
         private string $passwordVerify,
 
         #[NotBlank]
