@@ -32,4 +32,10 @@ final class Version20210307194154 extends AbstractMigration
         // Delete default roles
         $this->addSql("DELETE FROM role WHERE id=1 OR id=2;");
     }
+
+    // Workaround. See: https://github.com/doctrine/migrations/issues/1104
+    public function isTransactional(): bool
+    {
+        return false;
+    }
 }
