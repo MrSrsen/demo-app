@@ -14,9 +14,7 @@ services:
     working_dir: /app
     # command: tail -f /dev/null
     command: >
-      bash -c "composer install
-      && symfony console doctrine:migrations:migrate --no-interaction
-      && symfony server:start --no-tls"
+      bash -c "composer install && symfony server:start --no-tls"
     depends_on:
       - mariadb
 
@@ -30,12 +28,3 @@ services:
       - MYSQL_USER=megumin
       - MYSQL_PASSWORD=bakuretsu
       - MYSQL_DATABASE=konosuba
-
-  # coverage:
-  #   image: php:8.0.1-cli
-  #   volumes:
-  #     - ./tests/coverage:/app
-  #   ports:
-  #     - 1234:1234
-  #   working_dir: /app
-  #   command: php -S 0.0.0.0:1234

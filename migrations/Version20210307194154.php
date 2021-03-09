@@ -33,9 +33,7 @@ final class Version20210307194154 extends AbstractMigration
         $this->addSql("DELETE FROM role WHERE id=1 OR id=2;");
     }
 
-    /*
-     * TODO: https://github.com/doctrine/migrations/issues/1104
-     */
+    // Workaround. See: https://github.com/doctrine/migrations/issues/1104
     public function isTransactional(): bool
     {
         return false;

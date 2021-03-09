@@ -13,6 +13,10 @@ Symfony demo app for registration and showing users.
 git clone git@github.com:MrSrsen/demo-app.git
 cd demo-app
 docker-compose up
+
+# Open in another window and run migrations:
+docker-compose exec php bash
+symfony console doctrine:migrations:migrate --no-interaction
 ```
 
 Visit: http://localhost:8000/
