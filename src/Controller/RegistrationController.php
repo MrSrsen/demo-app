@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Request\UserRegistrationRequest;
+use App\Request\UserRegistration\UserRegistrationRequest;
 use App\Service\UserRegistrationService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +17,7 @@ class RegistrationController
         private ValidatorInterface $validator,
     ) {}
 
-    #[Route('/user', name: 'register_user', methods: ['POST'])]
+    #[Route('/users', name: 'register_user', methods: ['POST'])]
     public function register(UserRegistrationRequest $registrationRequest): JsonResponse
     {
         try {

@@ -14,7 +14,7 @@ class UserController extends AbstractController
         private UserRepository $userRepository,
     ) {}
 
-    #[Route('/user', name: 'list_users', methods: ['GET'])]
+    #[Route('/users', name: 'list_users', methods: ['GET'])]
     public function listAll(): JsonResponse
     {
         try {

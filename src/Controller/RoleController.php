@@ -14,7 +14,7 @@ class RoleController extends AbstractController
         private RoleRepository $roleRepository,
     ) {}
 
-    #[Route('/role', name: 'list_roles', methods: ['GET'])]
+    #[Route('/roles', name: 'list_roles', methods: ['GET'])]
     public function listAll(): JsonResponse
     {
         try {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Request;
+namespace App\Request\UserRegistration;
 
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
@@ -12,28 +12,28 @@ class UserRegistrationRequest
     public function __construct(
         #[NotBlank]
         #[Length(min: 2, max: 32)]
-        private string $firstName,
+        private ?string $firstName,
 
         #[NotBlank]
         #[Length(min: 2, max: 32)]
-        private string $lastName,
+        private ?string $lastName,
 
         #[NotBlank]
         #[Email]
         #[Length(max: 128)]
-        private string $email,
+        private ?string $email,
 
         #[NotBlank]
         #[Length(max: 128)]
-        private string $password,
+        private ?string $password,
 
         #[NotBlank]
         #[Length(max: 128)]
-        private string $passwordVerify,
+        private ?string $passwordVerify,
 
         #[NotBlank]
         #[Type(['type' => 'integer'])]
-        private int $roleId,
+        private ?int $roleId,
     ) {}
 
     public function getFirstName(): string
