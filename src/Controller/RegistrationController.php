@@ -17,7 +17,7 @@ class RegistrationController
         private ValidatorInterface $validator,
     ) {}
 
-    #[Route('/user', name: 'register_user', methods: ['POST'])]
+    #[Route('/users', name: 'register_user', methods: ['POST'])]
     public function register(UserRegistrationRequest $registrationRequest): JsonResponse
     {
         try {
