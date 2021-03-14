@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Request;
+namespace App\Request\UserRegistration;
 
 use App\Repository\RoleRepository;
 use App\Service\ArgumentResolverValidationException;
@@ -37,7 +37,7 @@ class UserRegistrationArgumentResolver implements ArgumentValueResolverInterface
 
         if ($result->count() > 0) {
             $exception = new ArgumentResolverValidationException("Registration validations failed!");
-            $exception->setErrorsAsViolations($result);
+            $exception->populateErrorsWithViolationsList($result);
             throw $exception;
         }
 
@@ -52,7 +52,7 @@ class UserRegistrationArgumentResolver implements ArgumentValueResolverInterface
         try {
             $this->roleRepository->findOneById($registrationRequest->getRoleId());
             yield $registrationRequest;
-        } catch (EntityNotFoundException $e) {
+        } catch (EntityNotFoundException) {
             $exception = new ArgumentResolverValidationException('Entity was not found!');
             $exception->setErrors([
                 'roleId' => 'Role do not exists!'

@@ -4,7 +4,7 @@ namespace App\Service;
 
 use App\Entity\User;
 use App\Repository\RoleRepository;
-use App\Request\UserRegistrationRequest;
+use App\Request\UserRegistration\UserRegistrationRequest;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityNotFoundException;
 

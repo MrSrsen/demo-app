@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Request\UserRegistrationRequest;
+use App\Request\UserRegistration\UserRegistrationRequest;
 use App\Service\UserRegistrationService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

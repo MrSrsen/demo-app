@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Request;
+namespace App\Request\UserRegistration;
 
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
