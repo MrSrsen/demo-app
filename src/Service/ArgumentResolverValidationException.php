@@ -2,11 +2,11 @@
 
 namespace App\Service;
 
-use RuntimeException;
+use InvalidArgumentException;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
-class ArgumentResolverValidationException extends RuntimeException
+class ArgumentResolverValidationException extends InvalidArgumentException
 {
     private array $errors;
 
@@ -15,7 +15,7 @@ class ArgumentResolverValidationException extends RuntimeException
         return $this->errors;
     }
 
-    public function setErrorsAsViolations(ConstraintViolationListInterface $violations): void
+    public function populateErrorsWithViolationsList(ConstraintViolationListInterface $violations): void
     {
         $errors = [];
         /** @var ConstraintViolation $violation */
@@ -26,7 +26,7 @@ class ArgumentResolverValidationException extends RuntimeException
             $errors[$path] = $violation->getMessage();
         }
 
-        $this->errors = $errors;
+        $this->setErrors($errors);
     }
 
     public function setErrors(array $errors): void

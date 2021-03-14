@@ -27,10 +27,6 @@ services:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
-    App\Request\UserRegistrationArgumentResolver:
-        tags:
-            - { name: controller.argument_value_resolver, priority: 50 }
-
     App\Events\InvalidRequestExceptionListener:
         tags:
             - { name: kernel.event_subscriber }

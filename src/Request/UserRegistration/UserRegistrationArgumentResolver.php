@@ -3,6 +3,7 @@
 namespace App\Request\UserRegistration;
 
 use App\Repository\RoleRepository;
+use App\Request\DataObjectArgumentResolverInterface;
 use App\Service\ArgumentResolverValidationException;
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,7 +11,7 @@ use Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class UserRegistrationArgumentResolver implements ArgumentValueResolverInterface
+class UserRegistrationArgumentResolver implements ArgumentValueResolverInterface, DataObjectArgumentResolverInterface
 {
     public function __construct(
         private ValidatorInterface $validator,
